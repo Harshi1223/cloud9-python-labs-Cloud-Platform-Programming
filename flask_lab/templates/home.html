@@ -2,22 +2,71 @@
 <html>
 <head>
     <title>Home</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-align: center;
+        }
+
+        .container {
+            margin-top: 100px;
+        }
+
+        h1 {
+            font-size: 40px;
+        }
+
+        .card {
+            background: white;
+            color: #333;
+            width: 300px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        a {
+            text-decoration: none;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .login-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background: white;
+            color: #667eea;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .login-btn:hover {
+            background: #eee;
+        }
+    </style>
 </head>
 <body>
-    <h1>Home Page</h1>
 
-    <ul>
-        {% for name in names %}
-            <li>
-                <a href="{{ url_for('profile', username=name) }}">
-                    {{ name }}
-                </a>
-            </li>
-        {% endfor %}
-    </ul>
+<div class="container">
+    <h1>Welcome to User Portal</h1>
 
-    <br>
-    <a href="{{ url_for('login') }}">Go to Login Page</a>
+    {% for name in names %}
+        <div class="card">
+            <a href="{{ url_for('profile', username=name) }}">
+                {{ name }}
+            </a>
+        </div>
+    {% endfor %}
+
+    <a class="login-btn" href="{{ url_for('login') }}">
+        Go to Login Page
+    </a>
+</div>
 
 </body>
 </html>
